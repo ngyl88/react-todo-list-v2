@@ -1,9 +1,12 @@
 import React from "react";
 
 export default props => {
-  console.log("todo", props.item.name);
-  console.log("completed?", props.item.isCompleted);
   return (
-    <li className={props.item.isCompleted ? "done" : ""}>{props.item.name}</li>
+    <li
+      className={props.item.isCompleted ? "done" : ""}
+      onClick={props.handleClick}
+    >
+      {props.item.name}
+    </li>
   );
 };
