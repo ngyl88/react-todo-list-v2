@@ -38,19 +38,32 @@ class TodoList extends Component {
   }
 
   handleClick(todo) {
-    const list = this.state.todos;
-    list[list.indexOf(todo)].isCompleted = true;
+    const index = this.state.todos.indexOf(todo);
+    const updatedTodo = {
+      ...todo,
+      isCompleted: true
+    };
+
     this.setState({
-      todos: list
+      todos: [
+        ...this.state.todos.slice(0, index),
+        updatedTodo,
+        ...this.state.todos.slice(index)
+      ]
     });
   }
 
   addTodo() {
-    const newTodo = { name: this.state.inputValue, isCompleted: false };
+    const newTodo = {
+      name: this.state.inputValue,
+      isCompleted: false
+    };
+    console.log(newTodo);
     this.setState({
       todos: [...this.state.todos, newTodo],
       inputValue: ""
     });
+    console.log(this.state);
   }
 
   handleNewTodoChange(event) {
