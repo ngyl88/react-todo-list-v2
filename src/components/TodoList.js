@@ -46,9 +46,9 @@ class TodoList extends Component {
 
     this.setState({
       todos: [
-        ...this.state.todos.slice(0, index),
-        updatedTodo,
-        ...this.state.todos.slice(index)
+          ...this.state.todos.slice(0, index),
+          updatedTodo,
+          ...this.state.todos.slice(index + 1)
       ]
     });
   }
@@ -58,12 +58,10 @@ class TodoList extends Component {
       name: this.state.inputValue,
       isCompleted: false
     };
-    console.log(newTodo);
     this.setState({
       todos: [...this.state.todos, newTodo],
       inputValue: ""
     });
-    console.log(this.state);
   }
 
   handleNewTodoChange(event) {
